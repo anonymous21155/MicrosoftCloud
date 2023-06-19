@@ -1,0 +1,19 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "FUNCTIONS_WORKER_RUNTIME": "node",
+        "TENANT_ID": "fe0805e6-6a29-4871-b760-6366128cdf58",
+        "CLIENT_ID": "e4685ca5-f944-49e8-a345-c1c69587c7c5",
+        "CLIENT_SECRET": "i2m8Q~bGrR_zaMKR4Uc8MrPg8j-spcgYQxqiSapL",
+        "USER_ID": "6e5eac95-c647-44fc-8fd5-5022a08d097b",
+        "ACS_CONNECTION_STRING": "endpoint=https://10xds-acs.communication.azure.com/;accesskey=4lu/S4TILDpAn4hOUi7n5qmI993ne7GCKuZrtRTKCBJEryKuRTDtjXSyJ0tzpC9iOReWoJVjb27A2e0NNqOeLw=="
+    },
+    "Host": {
+        "LocalHttpPort": 7071,
+        "CORS": "*",
+        "CORSCredentials": false
+    },
+    "watchDirectories": [
+        "Shared"
+    ]
+}
