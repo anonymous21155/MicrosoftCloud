@@ -30,26 +30,42 @@ function ensureGraphForAppOnlyAuth() {
 }
 
 async function createNewMeetingAsync(userId) {
-    ensureGraphForAppOnlyAuth();
-    let startTime = await startDateTimeAsync();
-    let endTime = await endDateTimeAsync();
-    const newMeeting = `/users/${userId}/calendar/events`;
-    
-    const event = {
-      subject: 'Customer Service Meeting',
-      start: {
-          dateTime: startTime,
-          timeZone: 'UTC'
+  ensureGraphForAppOnlyAuth();
+  let startTime = await startDateTimeAsync();
+  let endTime = await endDateTimeAsync();
+  const newMeeting = `/users/${userId}/calendar/events`;
+  
+  const event = {
+  subject: 'Customer Service Meeting',
+  start: {
+      dateTime: startTime,
+      timeZone: 'UTC'
+  },
+  end: {
+      dateTime: endTime,
+      timeZone: 'UTC'
+  },
+  attendees: [
+    {
+      emailAddress: {
+        address: 'athira.chandran@10xds.com',
+        name: 'Athira'
       },
-      end: {
-          dateTime: endTime,
-          timeZone: 'UTC'
+      type: 'Required'
+    },
+    {
+      emailAddress: {
+        address: 'divya.nair@10xds.com',
+        name: 'Divya'
       },
-      isOnlineMeeting: true
-    };
-    
-    const newEvent = await appGraphClient.api(newMeeting).post(event);    
-    return newEvent;     
+      type: 'Required'
+    }
+  ],
+  isOnlineMeeting: true
+  };
+  
+  const newEvent = await appGraphClient.api(newMeeting).post(event);    
+  return newEvent;     
 }
-      
+
 export default createNewMeetingAsync;
