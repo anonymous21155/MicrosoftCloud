@@ -55,8 +55,8 @@ async function createNewMeetingAsync(userId) {
     },
     {
       emailAddress: {
-        address: 'divya.nair@10xds.com',
-        name: 'Divya'
+        address: 'ashik.nizar@10xds.com',
+        name: 'Ashik'
       },
       type: 'Required'
     }
