@@ -67,11 +67,9 @@ const App = () => {
       <div>
         <h1>Contact Customer Service</h1>
         <div className="wrapper">
-        <div>Thread ID: {threadId}</div>
-      <div>User ID: {userId}</div>
-      <div>End ID: {endpointUrl}</div>
           <CallWithChatComposite
             adapter={callWithChatAdapter}
+            formFactor="mobile"
           />
           
         </div>

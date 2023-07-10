@@ -45,7 +45,15 @@ async function createNewMeetingAsync(userId) {
       dateTime: endTime,
       timeZone: 'UTC'
   },
-  
+  attendees: [
+    {
+      emailAddress: {
+        "address": 'acsusers@10xds.com',
+        "name": 'Customer Service Agent'
+      },
+      type: 'required'
+    }
+  ],
   isOnlineMeeting: true
   };
   
