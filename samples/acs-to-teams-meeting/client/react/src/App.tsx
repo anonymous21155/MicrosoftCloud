@@ -1,14 +1,16 @@
 import { AzureCommunicationTokenCredential, CommunicationUserIdentifier } from '@azure/communication-common';
 import {  
-  CallComposite, 
+  CallWithChatComposite,
+  useAzureCommunicationCallWithChatAdapter, 
   fromFlatCommunicationIdentifier, 
-  useAzureCommunicationCallAdapter 
 } from '@azure/communication-react';
 import React, { useState, useMemo, useEffect } from 'react';
 import './App.css';
 
 const App = () => { 
-  const displayName = 'Guest'
+  const displayName = 'Guest';
+  const [endpointUrl, setEndpointUrl] = useState<string>('');
+  const [threadId, setThreadId] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
   const [token, setToken] = useState<string>('');
   const [teamsMeetingLink, setTeamsMeetingLink] = useState<string>('');
@@ -20,19 +22,23 @@ const App = () => {
     return;
     }, [token]);
 
-  const callAdapterArgs = useMemo(() => {
-    if (userId && credential && displayName && teamsMeetingLink) {
+  const callWithChatAdapterArgs = useMemo(() => {
+    if (userId && endpointUrl && credential && displayName && threadId && teamsMeetingLink) {
       return {
         userId: fromFlatCommunicationIdentifier(userId) as CommunicationUserIdentifier,
+        endpoint: endpointUrl,
         displayName,
         credential,
+        threadId,
         locator: { meetingLink: teamsMeetingLink },
       }
     }
     return {};
-  }, [userId, credential, displayName, teamsMeetingLink]);
+  }, [userId, endpointUrl, credential, displayName, threadId, teamsMeetingLink]);
 
-  const callAdapter = useAzureCommunicationCallAdapter(callAdapterArgs);
+  const callWithChatAdapter = useAzureCommunicationCallWithChatAdapter(callWithChatAdapterArgs);
+
+  
 
   useEffect(() => {
     const init = async () => {
@@ -42,6 +48,8 @@ const App = () => {
         let user = await res.json();
         setUserId(user.userId);
         setToken(user.token);
+        setThreadId(user.threadId);
+        setEndpointUrl(user.endpointUrl);
         
         setMessage('Getting Teams meeting link...');
         //Call Azure Function to get the meeting link
@@ -54,14 +62,18 @@ const App = () => {
     init();
 
 }, []);
-  if (callAdapter) {
+  if (callWithChatAdapter) {
     return (
       <div>
         <h1>Contact Customer Service</h1>
         <div className="wrapper">
-          <CallComposite
-            adapter={callAdapter}
+        <div>Thread ID: {threadId}</div>
+      <div>User ID: {userId}</div>
+      <div>End ID: {endpointUrl}</div>
+          <CallWithChatComposite
+            adapter={callWithChatAdapter}
           />
+          
         </div>
       </div>
     );
