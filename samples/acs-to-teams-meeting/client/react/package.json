@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/uuid": "^9.0.0",
     "cross-env": "^7.0.3",
+    "mobile-detect": "^1.4.5",
     "react": "~16.14.0",
     "react-dom": "16.13.1",
     "react-router-dom": "^5.1.2",
