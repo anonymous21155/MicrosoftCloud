@@ -17,7 +17,7 @@ const App = () => {
   const logoUrl = 'https://th.bing.com/th/id/OIP.65eMKYCyemDCcSplj51IEgAAAA?pid=ImgDet&rs=1';
   const locale = COMPOSITE_LOCALE_EN_US;
   const waitingTitle = 'Thankyou for contacting 10xDS Customer Service';
-  const waitingSubtitle ='Agent might be engaged with other customers, please be patient';
+  const waitingSubtitle ='Agent will be assigned soon';
   const [endpointUrl, setEndpointUrl] = useState<string>('');
   const [threadId, setThreadId] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
