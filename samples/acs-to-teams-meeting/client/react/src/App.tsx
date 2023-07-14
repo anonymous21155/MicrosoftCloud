@@ -5,16 +5,15 @@ import {
   COMPOSITE_LOCALE_EN_US,
   fromFlatCommunicationIdentifier,
   darkTheme, 
-  CallWithChatAdapter,
-  CallWithChatAdapterState
+  CallWithChatAdapter
 } from '@azure/communication-react';
 import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import MobileDetect from 'mobile-detect';
 import './App.css';
+import logoUrl from './xds.png';
 
 const App = () => { 
   const displayName = 'Guest';
-  const logoUrl = 'https://th.bing.com/th/id/OIP.65eMKYCyemDCcSplj51IEgAAAA?pid=ImgDet&rs=1';
   const locale = COMPOSITE_LOCALE_EN_US;
   const waitingTitle = 'Thankyou for contacting 10xDS Customer Service';
   const waitingSubtitle ='Service agent might be engaged with other customers, please be patient';
@@ -66,7 +65,7 @@ const App = () => {
         setThreadId(user.threadId);
         setEndpointUrl(user.endpointUrl);
         
-        setMessage('Getting Teams meeting link...');
+        setMessage('Please wait...');
         //Call Azure Function to get the meeting link
         res = await fetch(process.env.REACT_APP_TEAMS_MEETING_FUNCTION as string);
         let link = await res.text();
@@ -82,7 +81,6 @@ const App = () => {
     const formFactorValue = new MobileDetect(window.navigator.userAgent).mobile() ? 'mobile' : 'desktop';
     return (
       <div>
-        
         <div className="wrapper">
           <CallWithChatComposite
             adapter={callWithChatAdapter}
@@ -112,13 +110,12 @@ const App = () => {
       </div>
     );
   }
-  if (!credential) {
-    return <>Failed to construct credential. Provided token is malformed.</>;
-  }
-  if (message) {
-    return <div>{message}</div>;
-  }
-  return <div>Initializing...</div>;
+  return (
+    <div className='website'>
+      <h1 className='heading'>10xds Customer Service</h1>
+      <div className='status'>Everything getting ready...</div>
+      </div>
+  ); 
 };
 
 export default App;
