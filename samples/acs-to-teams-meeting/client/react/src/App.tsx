@@ -77,7 +77,7 @@ const App = () => {
 
 }, []);
   if (callWithChatAdapter) {
-    const logo = logoUrl ? <img src={logoUrl} /> : <></>;
+    const logo = logoUrl ? <img src={logoUrl} alt="" /> : <></>;
     const formFactorValue = new MobileDetect(window.navigator.userAgent).mobile() ? 'mobile' : 'desktop';
     return (
       <div>
@@ -109,6 +109,12 @@ const App = () => {
         </div>
       </div>
     );
+  }
+  if (!credential) {
+    return <div>Please wait...</div>
+  }
+  if (message) {
+    return <div>{message}</div>
   }
   return (
     <div className='website'>
