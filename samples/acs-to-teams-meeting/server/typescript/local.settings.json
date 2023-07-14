@@ -7,7 +7,7 @@
         "CLIENT_SECRET": "i2m8Q~bGrR_zaMKR4Uc8MrPg8j-spcgYQxqiSapL",
         "USER_ID": "6e5eac95-c647-44fc-8fd5-5022a08d097b",
         "ENDPOINT_URL": "https://10xds-acs.communication.azure.com/",
-        "ACS_CONNECTION_STRING": "endpoint=https://10xds-acs.communication.azure.com/;accesskey=4lu/S4TILDpAn4hOUi7n5qmI993ne7GCKuZrtRTKCBJEryKuRTDtjXSyJ0tzpC9iOReWoJVjb27A2e0NNqOeLw=="
+        "ACS_CONNECTION_STRING": "endpoint=https://10xds-acs.communication.azure.com/;accesskey=zNQHbURtbmlab+XKfsSGN13NY+7CHD5U+jyhp416WJFVixB7wp1xLu6+D7/aw+rFnB+cyZIirGfzB2+o/HeolQ=="
     },
     "Host": {
         "LocalHttpPort": 7071,
