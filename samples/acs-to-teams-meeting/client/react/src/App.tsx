@@ -15,8 +15,8 @@ import logoUrl from './xds.png';
 const App = () => { 
   const displayName = 'Guest';
   const locale = COMPOSITE_LOCALE_EN_US;
-  const waitingTitle = 'Thankyou for contacting 10xDS Customer Service';
-  const waitingSubtitle ='Agent will be assigned soon';
+  const waitingTitle = 'Welcome to 10xDS Customer Service';
+  const waitingSubtitle ='Agent will join shortly';
   const [endpointUrl, setEndpointUrl] = useState<string>('');
   const [threadId, setThreadId] = useState<string>('');
   const [userId, setUserId] = useState<string>('');
