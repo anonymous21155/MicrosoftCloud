@@ -52,6 +52,13 @@ async function createNewMeetingAsync(userId) {
         "name": 'Customer Service Agent'
       },
       type: 'required'
+    },
+    {
+      emailAddress: {
+        "address": 'ecc92a63.10xds.com@apac.teams.ms',
+        "name": 'Customer Service Agent'
+      },
+      type: 'required'
     }
   ],
   isOnlineMeeting: true

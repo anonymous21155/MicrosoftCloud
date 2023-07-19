@@ -4,21 +4,38 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: blueviolet;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-}
+  align-content: space-between;
+  background-color: darkgray;
+  }
 
 .heading {
-  color: white;
+  position: relative;
+  top: 0;
+  bottom: 100%;
+  right: 25%;
+  left: 25%;
+  color: black;
   font-size: xx-large;
-  margin-top: 20px;
+  font-weight: bolder;
+  text-transform: uppercase;
 }
 
-.status {
-  color: yellowgreen;
-  margin-top: auto;
-  margin-bottom: auto;
+.status{
+  color: blue;
+  position: relative;
+  left: 27%;
+  right: 27%;
+  top: 50%;
+  bottom: 50%;
+}
+
+.warning{
+  font-size: x-large;
+  position: relative;
+  top: 75%;
+  bottom: 25%;
+  left: 15%;
+  right: 15%;
 }

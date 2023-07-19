@@ -22,7 +22,6 @@ const App = () => {
   const [userId, setUserId] = useState<string>('');
   const [token, setToken] = useState<string>('');
   const [teamsMeetingLink, setTeamsMeetingLink] = useState<string>('');
-  const [message, setMessage] = useState<string>('');
   const credential = useMemo(() => {
     if (token) {
       return new AzureCommunicationTokenCredential(token)
@@ -34,7 +33,6 @@ const App = () => {
       adapter.joinCall(true); 
       return new Promise((resolve, reject) => resolve(adapter));
     }, []);
-
 
   const callWithChatAdapterArgs = useMemo(() => {
     if (userId && endpointUrl && credential && displayName && threadId && teamsMeetingLink) {
@@ -52,11 +50,9 @@ const App = () => {
 
   const callWithChatAdapter = useAzureCommunicationCallWithChatAdapter(callWithChatAdapterArgs, afterAdapterCreate);
 
-  
-
   useEffect(() => {
     const init = async () => {
-        setMessage('Getting ACS user');
+        
         //Call Azure Function to get the ACS user identity and token
         let res = await fetch(process.env.REACT_APP_ACS_USER_FUNCTION as string);
         let user = await res.json();
@@ -65,12 +61,10 @@ const App = () => {
         setThreadId(user.threadId);
         setEndpointUrl(user.endpointUrl);
         
-        setMessage('Please wait...');
         //Call Azure Function to get the meeting link
         res = await fetch(process.env.REACT_APP_TEAMS_MEETING_FUNCTION as string);
         let link = await res.text();
         setTeamsMeetingLink(link);
-        setMessage('');
         console.log('Teams meeting link', link);
     }
     init();
@@ -109,19 +103,20 @@ const App = () => {
         </div>
       </div>
     );
-  }
-  if (!credential) {
-    return <div>Please wait...</div>
-  }
-  if (message) {
-    return <div>{message}</div>
-  }
-  return (
-    <div className='website'>
-      <h1 className='heading'>10xds Customer Service</h1>
-      <div className='status'>Everything getting ready...</div>
-      </div>
-  ); 
+  } else {
+    return (
+      <div className='website'>
+        <h1 className='heading'>10xds Customer Service</h1>
+          <h2 className='status'>Everything is getting ready <div className='spinner-grow spinner-grow-sm text-muted'></div>
+          <div className='spinner-grow spinner-grow-sm text-primary'></div>
+          <div className='spinner-grow spinner-grow-sm text-warning'></div>
+          </h2>
+          <div className="alert alert-warning warning">
+            <strong>Warning!</strong> Your call may be subjected for recording.
+          </div>
+        </div>
+    ); 
+  }  
 };
 
 export default App;
