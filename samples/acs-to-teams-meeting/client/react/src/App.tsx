@@ -7,10 +7,15 @@ import {
   darkTheme, 
   CallWithChatAdapter
 } from '@azure/communication-react';
-import React, { useState, useMemo, useEffect, useCallback } from 'react';
+import React, { useState, useMemo, useEffect, useCallback} from 'react';
 import MobileDetect from 'mobile-detect';
 import './App.css';
+import Progressbar from './Progressbar';
+import DynamicStatus from './status';
 import logoUrl from './xds.png';
+import mobileicon from './Lightmobile.gif';
+import desktopicon from './Lightdesktop.gif';
+import xdslogo from './10xds logo.png';
 
 const App = () => { 
   const displayName = 'Guest';
@@ -66,6 +71,7 @@ const App = () => {
         let link = await res.text();
         setTeamsMeetingLink(link);
         console.log('Teams meeting link', link);
+        
     }
     init();
 
@@ -102,18 +108,22 @@ const App = () => {
           
         </div>
       </div>
-    );
+    );  
   } else {
     return (
       <div className='website'>
-        <h1 className='heading'>10xds Customer Service</h1>
-          <h2 className='status'>Everything is getting ready <div className='spinner-grow spinner-grow-sm text-muted'></div>
-          <div className='spinner-grow spinner-grow-sm text-primary'></div>
-          <div className='spinner-grow spinner-grow-sm text-warning'></div>
-          </h2>
-          <div className="alert alert-warning warning">
-            <strong>Warning!</strong> Your call may be subjected for recording.
-          </div>
+        <picture >
+          <source className='video' srcSet={desktopicon} media="(min-width: 600px)"/>
+        <img className='video' src={mobileicon} alt=''/>
+        </picture>
+        <div className='status'>
+          <Progressbar />
+        </div>
+        <div className='custom'>
+        <DynamicStatus />
+      </div>
+        <h1 className='heading'> Copyright 2021 Exponential Digital Solutions.</h1>
+          <img className='img' src={xdslogo} alt='' />
         </div>
     ); 
   }  

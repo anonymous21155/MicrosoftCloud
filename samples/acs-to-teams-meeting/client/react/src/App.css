@@ -4,38 +4,59 @@
   left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-content: space-between;
-  background-color: darkgray;
+  background-color: #fcfcff;
   }
-
-.heading {
-  position: relative;
-  top: 0;
-  bottom: 100%;
-  right: 25%;
-  left: 25%;
-  color: black;
-  font-size: xx-large;
-  font-weight: bolder;
-  text-transform: uppercase;
+ 
+.img{
+  position: absolute;
+  top: 72%;
+  bottom: 38%;
+  left: 45%;
+  right: 30%;
+  height: 48px;
+  width: 130px;
 }
 
 .status{
-  color: blue;
-  position: relative;
-  left: 27%;
-  right: 27%;
-  top: 50%;
-  bottom: 50%;
+  position: absolute;
+  top: 45%;
+  bottom: 55%;
+  left: 20%;
+  right: 20%;
+  }
+
+.video{
+  position: absolute;
+  top: 15%;
+  bottom: 85%;
+  left: 37%;
+  right: 20%;
+  width: 350px;
+  height: 200px;
 }
 
-.warning{
-  font-size: x-large;
-  position: relative;
-  top: 75%;
-  bottom: 25%;
-  left: 15%;
-  right: 15%;
+.custom{
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 45%;
+  right: 30%;
+}
+
+.text{
+  font-size: small;
+}
+
+.heading {
+  position: absolute;
+  top: 85%;
+  bottom: 15%;
+  left: 40%;
+  right: 30%;
+  font-size: small;
+}
+
+.heading::before {
+  content: "©";
+  color: blue;
 }
